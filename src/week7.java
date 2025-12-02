@@ -14,6 +14,7 @@ public class week7 {
         ArrayTimeBegin();
         ArrayTimeRandom();
         ArrayTimeDelete();
+        WhyTime();
     }
 
     //
@@ -154,6 +155,28 @@ public class week7 {
     }
 
     //H
+    private static void WhyTime() {
+        System.out.println(
+
+        );
+    }
+
+    //I
+    private static int countVowels(String s) {
+
+        int count = 0;
+
+        for (char a : s.toLowerCase().toCharArray())
+            if ("aeiou".indexOf(a) >= 0)
+                count++;
+
+        return count;
+    }
+
+    private static boolean isVowel(char a) {
+        a = Character.toLowerCase(a);
+        return ""
+    }
 
 
 
