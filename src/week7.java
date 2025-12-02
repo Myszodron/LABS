@@ -12,6 +12,8 @@ public class week7 {
         ArraySentence();
         ArrayTime();
         ArrayTimeBegin();
+        ArrayTimeRandom();
+        ArrayTimeDelete();
     }
 
     //
@@ -143,7 +145,18 @@ public class week7 {
     }
 
     //G
-    private static void  
+    private static void  ArrayTimeDelete() {
+
+        listAccess(1_000_000,
+                () -> repeat(10_000, () -> currentAL.remove(0)),
+                () -> repeat(10_000, () -> currentLL.removeFirst())
+        );
+    }
+
+    //H
+
+
+
 
 }
 
