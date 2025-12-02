@@ -66,7 +66,7 @@ public class week7 {
         for (String s : list)
             System.out.println(s);
 
-        list.removeFirst();
+        list.remove(0);
         System.out.println("Updated list: " + list);
     }
 
