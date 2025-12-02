@@ -15,6 +15,10 @@ public class week7 {
         ArrayTimeRandom();
         ArrayTimeDelete();
         WhyTime();
+        countVowelsExample();
+        isPrimeExample();
+
+
     }
 
     //
@@ -157,30 +161,47 @@ public class week7 {
     //H
     private static void WhyTime() {
         System.out.println(
-
+                        "ArrayList:\n" +
+                        "- Fast random access (O(1))\n" +
+                        "- Slow insert/delete at front (O(n))\n\n" +
+                        "LinkedList:\n" +
+                        "- Slow random access (O(n))\n" +
+                        "- Fast insert/delete at front (O(1))\n"
         );
     }
 
     //I
     private static int countVowels(String s) {
-
         int count = 0;
 
         for (char a : s.toLowerCase().toCharArray())
             if ("aeiou".indexOf(a) >= 0)
                 count++;
-
         return count;
-    }
-
-    private static boolean isVowel(char a) {
-        a = Character.toLowerCase(a);
-        return ""
     }
 
     private static void countVowelsExample() {
         System.out.println("Vowels in 'Juki is cute': " + countVowels("Juki is cute"));
         System.out.println();
+    }
+
+    //J
+    private static boolean isPrime(int c) {
+        if (c < 2)
+            return false;
+        for (int i = 2; i * i <= c; i++)
+            if (c % i == 0)
+                return false;
+        return true;
+    }
+
+    private static void isPrimeExample() {
+        System.out.println("Is 9 prime? " + isPrime(9));
+        System.out.println("Is 3 prime? " + isPrime(3));
+        System.out.println("Is 14 prime? " + isPrime(14));
+        System.out.println();
+
+
     }
 
 
