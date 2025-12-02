@@ -17,8 +17,7 @@ public class week7 {
         WhyTime();
         countVowelsExample();
         isPrimeExample();
-
-
+        findSecondLargestExample();
     }
 
     //
@@ -161,12 +160,12 @@ public class week7 {
     //H
     private static void WhyTime() {
         System.out.println(
-                        "ArrayList:\n" +
-                        "- Fast random access (O(1))\n" +
-                        "- Slow insert/delete at front (O(n))\n\n" +
-                        "LinkedList:\n" +
-                        "- Slow random access (O(n))\n" +
-                        "- Fast insert/delete at front (O(1))\n"
+                "ArrayList:\n" +
+                        "- Fast to read any index (get)\n" +
+                        "- Slow insert/remove at the beginning (many elements must change)\n" +
+                "LinkedList:\n" +
+                        "- Slow to read an index (has to go through the whole list)\n" +
+                        "- Fast to add or remove at the beginning (only one element changes)\n"
         );
     }
 
@@ -204,9 +203,30 @@ public class week7 {
 
     }
 
+    //K
+    private static int findSecondLargest(int[] b) {
 
+        int max = b[0];
+        int second = Integer.MIN_VALUE;
 
+        for (int x : b) {
+            if (x > max) {
+                second = max;
+                max = x;
+            } else if (x> second && x!= max) {
+                second = x;
+            }
 
+        }
+        return second;
+    }
+
+    private static void findSecondLargestExample() {
+        int[] array = {12, 84, 32, 853};
+
+        System.out.println("Second largest number is: " + findSecondLargest(array));
+        System.out.println();
+    }
 }
 
 
