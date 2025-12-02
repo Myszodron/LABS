@@ -5,7 +5,7 @@ public class week7 {
     private static ArrayList<Integer> currentAL;
     private static LinkedList<Integer> currentLL;
 
-    public static void Main(String[] args) {
+    public static void main(String[] args) {
 
         ArrayNames();
         ArrayReverse();
@@ -34,15 +34,14 @@ public class week7 {
         for (int i = 0; i < size; i++) {
             currentAL.add(i);
             currentLL.add(i);
-
-            long tA = time(workAL);
-            long tL = time(workLL);
-
-            System.out.println("ArrayList access time: " + tA + " ms");
-            System.out.println("LinkedList access time: " + tL + " ms");
-            System.out.println();
-
         }
+
+        long tA = time(workAL);
+        long tL = time(workLL);
+
+        System.out.println("ArrayList access time: " + tA + " ms");
+        System.out.println("LinkedList access time: " + tL + " ms");
+        System.out.println();
     }
 
     private static void repeat(int time, Runnable task) {
