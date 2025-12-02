@@ -6,14 +6,22 @@ public class week7 {
         ArrayNames();
         ArrayReverse();
         ArraySentence();
+        ArrayTime();
 
     }
+
     //
     private static long time(Runnable task) {
         long start = System.currentTimeMillis();
         task.run();
         return System.currentTimeMillis() - start;
     }
+
+    private static void listFill(List<Integer> list, int size) {
+        for (int i = 0; i < size; i++)
+            list.add(i);
+    }
+
     //
     private static void ArrayNames() {
 
@@ -34,6 +42,7 @@ public class week7 {
         list.removeFirst();
         System.out.println("Updated list: " + list);
     }
+
     //
     private static void ArrayReverse() {
 
@@ -52,14 +61,15 @@ public class week7 {
     }
 
     private static void reverseList(ArrayList<Integer> a) {
-        for (int l = 0, r = a.size() - 1; l < r;  l++, r--) {
+        for (int l = 0, r = a.size() - 1; l < r; l++, r--) {
             int temp = a.get(l);
             a.set(l, a.get(r));
-            a.set(r,temp);
+            a.set(r, temp);
         }
     }
+
     //
-    private static void  ArraySentence{
+    private static void ArraySentence() {
 
         ArrayList<String> word = new ArrayList<>(
                 Arrays.asList("Juki", "gets", "chubby", "in", "winter")
@@ -76,9 +86,39 @@ public class week7 {
         System.out.println(sentence);
         System.out.println();
     }
+
     //
+    private static void ArrayTime() {
 
+        ArrayList<Integer> al = new ArrayList<>();
+        LinkedList<Integer> ll = new LinkedList<>();
 
+        listFill(al, 1_000_000);
+        listFill(ll, 1_000_000);
 
+        Random r = new Random();
+
+        long tAL = time(() -> {
+            for (int i = 0; i < 10_000; i++)
+                al.get(r.nextInt(1_000_000));
+        });
+
+        long tLL = time(() -> {
+            for (int i = 0; i < 10_000; i++)
+                ll.get(r.nextInt(1_000_000));
+        });
+
+        System.out.println("ArrayList access time: " + tAL + " milliseconds");
+        System.out.println("LinkedList access time: " + tLL + " milliseconds");
+    }
 }
+
+
+
+
+
+
+
+
+
 
