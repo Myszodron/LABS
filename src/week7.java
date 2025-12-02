@@ -5,6 +5,7 @@ public class week7 {
 
         ArrayNames();
         ArrayReverse();
+        ArraySentence();
 
     }
     //
@@ -56,8 +57,28 @@ public class week7 {
             a.set(l, a.get(r));
             a.set(r,temp);
         }
-
-
     }
+    //
+    private static void  ArraySentence{
+
+        ArrayList<String> word = new ArrayList<>(
+                Arrays.asList("Juki", "gets", "chubby", "in", "winter")
+        );
+
+        String sentence = "";
+
+        for (int i = 0; i < word.size(); i++) {
+            sentence += word.get(i);
+            if (i < word.size() - 1)
+                sentence += " ";
+        }
+
+        System.out.println(sentence);
+        System.out.println();
+    }
+    //
+
+
 
 }
+
