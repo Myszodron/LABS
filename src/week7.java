@@ -1,13 +1,17 @@
 import java.util.*;
 
 public class week7 {
+
+    private static ArrayList<Integer> currentAL;
+    private static LinkedList<Integer> currentLL;
+
     public static void Main(String[] args) {
 
         ArrayNames();
         ArrayReverse();
         ArraySentence();
         ArrayTime();
-
+        ArrayTimeBegin();
     }
 
     //
@@ -17,12 +21,30 @@ public class week7 {
         return System.currentTimeMillis() - start;
     }
 
-    private static void listFill(List<Integer> list, int size) {
-        for (int i = 0; i < size; i++)
-            list.add(i);
+    private static void listAccess(int size, Runnable workAL, Runnable workLL) {
+        currentAL = new ArrayList<>();
+        currentLL = new LinkedList<>();
+
+        for (int i = 0; i < size; i++) {
+            currentAL.add(i);
+            currentLL.add(i);
+
+            long tA = time(workAL);
+            long tL = time(workLL);
+
+            System.out.println("ArrayList access time: " + tA + " ms");
+            System.out.println("LinkedList access time: " + tL + " ms");
+            System.out.println();
+
+        }
     }
 
-    //
+    private static void repeat(int time, Runnable task) {
+        for (int i = 0; i < time; i++)
+            task.run();
+    }
+
+    //A
     private static void ArrayNames() {
 
         ArrayList<String> names = new ArrayList<>(
@@ -43,7 +65,7 @@ public class week7 {
         System.out.println("Updated list: " + list);
     }
 
-    //
+    //B
     private static void ArrayReverse() {
 
         int n = 8;
@@ -68,7 +90,7 @@ public class week7 {
         }
     }
 
-    //
+    //C
     private static void ArraySentence() {
 
         ArrayList<String> word = new ArrayList<>(
@@ -87,31 +109,46 @@ public class week7 {
         System.out.println();
     }
 
-    //
+    //D
     private static void ArrayTime() {
-
-        ArrayList<Integer> al = new ArrayList<>();
-        LinkedList<Integer> ll = new LinkedList<>();
-
-        listFill(al, 1_000_000);
-        listFill(ll, 1_000_000);
 
         Random r = new Random();
 
-        long tAL = time(() -> {
-            for (int i = 0; i < 10_000; i++)
-                al.get(r.nextInt(1_000_000));
-        });
-
-        long tLL = time(() -> {
-            for (int i = 0; i < 10_000; i++)
-                ll.get(r.nextInt(1_000_000));
-        });
-
-        System.out.println("ArrayList access time: " + tAL + " milliseconds");
-        System.out.println("LinkedList access time: " + tLL + " milliseconds");
+        listAccess(1_000_000,
+                () -> repeat(10_000, () -> currentAL.get(r.nextInt(currentAL.size()))),
+                () -> repeat(10_000, () -> currentLL.get(r.nextInt(currentLL.size())))
+        );
     }
+
+    //E
+    private static void ArrayTimeBegin() {
+
+        listAccess(1_000_000,
+                () -> repeat(10_000, () -> currentAL.add(0, 0)),
+                () -> repeat(10_000, () -> currentLL.addFirst(0))
+        );
+    }
+
+   //F
+    private static void ArrayTimeRandom() {
+
+        Random r = new Random();
+
+        listAccess(1_000_000,
+                () -> repeat(10_000, () -> currentAL.add(r.nextInt(currentAL.size()), 0)
+                ),
+                () -> repeat(10_000, () -> currentLL.add(r.nextInt(currentLL.size()), 0)
+                )
+        );
+    }
+
+    //G
+    private static void  
+
 }
+
+
+
 
 
 
