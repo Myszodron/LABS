@@ -178,6 +178,11 @@ public class week7 {
         return ""
     }
 
+    private static void countVowelsExample() {
+        System.out.println("Vowels in 'Juki is cute': " + countVowels("Juki is cute"));
+        System.out.println();
+    }
+
 
 
 
