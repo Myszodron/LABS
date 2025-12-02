@@ -205,10 +205,8 @@ public class week6 {
         int m = a.length;
         int n = a[0].length;
 
-        int[][] out = new int[m][n];
-
-        if (m < 3 || n < 3)
-            return out;
+        int[][] temp = new int[(m - 2) * (n - 2)][3];
+        int count = 0;
 
         for (int i = 1; i < m - 1; i++)
             for (int j = 1; j < n - 1; j++) {
@@ -218,20 +216,34 @@ public class week6 {
                 if (x > a[i - 1][j] &&
                         x > a[i + 1][j] &&
                         x > a[i][j - 1] &&
-                        x > a[i][j + 1])
-                    out[i][j] = x;
+                        x > a[i][j + 1]) {
+
+                    temp[count][0] = i;
+                    temp[count][1] = j;
+                    temp[count][2] = x;
+                    count++;
+
+                }
+
             }
-        return out;
+        return Arrays.copyOf(temp, count);
     }
 
     //E8
     private static int[][] jagged() {
-        return new int[][]{
-                {1, 2, 3},
-                {4, 5},
-                {6, 7, 8, 9},
-                {10}
-        };
+
+        int[] rowSize = {3, 5, 2, 1};
+
+        int[][] jagged = new int[rowSize.length][];
+
+        int value = 1;
+        for (int i = 0; i < rowSize.length; i++) {
+            jagged[i] = new int[rowSize[i]];
+            for (int j = 0; j < rowSize[i]; j++) {
+                jagged[i][j] = value++;
+            }
+        }
+        return jagged;
     }
 
     //E9
