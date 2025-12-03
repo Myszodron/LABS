@@ -18,6 +18,32 @@ public class Week4Exercises {
         week48.run();
             System.out.println();
     }
+
+    private static boolean isPrime(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i * i <= n; i++)
+            if (n % i == 0) return false;
+        return true;
+    }
+
+    private static String reverse(String s) {
+        String reversed = "";
+        for (int i = s.length() - 1; i >= 0; i--)
+            reversed = reversed + s.charAt(i);
+        return reversed;
+    }
+
+    private static boolean isPalindrome(String s) {
+        int l = 0, r = s.length() - 1;
+        while (l < r) {
+            if (s.charAt(l) != s.charAt(r))
+                return false;   // early stop
+            l++;
+            r--;
+        }
+        return true;
+    }
+
     //Exercise 1
     class week41 {
         static void run() {
